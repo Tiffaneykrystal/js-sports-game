@@ -1,26 +1,43 @@
-let teamoneshoot = document.querySelector("#teamone-numshots");
-let teamtwoshoot = document.querySelector("#teamtwo-numshots");
-let buttoneone = document.querySelector("#teamone-shoot-button");
-let buttontwo = document.querySelector("#teamtwo-shoot-button");
-let teamonegoals = document.querySelector("#teamone-numgoals");
-let teamtwogoals = document.querySelector("#teamtwo-numgoals");
-let reset = document.querySelector("#reset-button");
-let buttonone = Math.random();
+let teamOneShoot = document.querySelector("#teamone-numshots");
+let buttonOne = document.querySelector("#teamone-shoot-button");
+let teamOneGoals = document.querySelector("#teamone-numgoals");
 
-reset.addEventListener("click", function () {
-  resetButton.innerHTML = reset;
-  resetButton = reset;
+let teamTwoShoot = document.querySelector("#teamtwo-numshots");
+let buttonTwo = document.querySelector("#teamtwo-shoot-button");
+let teamTwoGoals = document.querySelector("#teamtwo-numgoals");
+
+let gameReset = document.querySelector("#reset-button");
+let resetCount = document.querySelector("#num-resets");
+
+gameReset.addEventListener("click", function () {
+  let newResetCount = Number(resetCount.innerHTML) + 1;
+  teamOneShoot.innerHTML = 0;
+  teamOneGoals.innerHTML = 0;
+  teamTwoShoot.innerHTML = 0;
+  teamTwoGoals.innerHTML = 0;
+  resetCount.innerHTML = newResetCount;
 });
-buttonone.addEventListener("click", function () {
-  shoot = Math.random();
-  if (shoot < 0.4) {
-    teamonegoals += 1;
-    teamoneshoot += 1;
-  } else {
+
+buttonOne.addEventListener("click", function () {
+  let newTeamOneShots = Number(teamOneShoot.innerHTML) + 1;
+  let x = Math.floor(Math.random() * 10);
+  if (x % 2 == 0) {
+    x = Number(teamOneGoals.innerHTML) + 1;
+    teamOneGoals.innerHTML = x;
   }
+  teamOneShoot.innerHTML = newTeamOneShots;
 });
 
-buttontwo.addEventListener("click", function () {});
-console.log(buttoneone);
-console.log(buttontwo);
-console.log(reset);
+buttonTwo.addEventListener("click", function () {
+  let newTeamTwoShots = Number(teamTwoShoot.innerHTML) + 1;
+  let x = Math.floor(Math.random() * 10);
+  if (x % 2 == 0) {
+    x = Number(teamTwoGoals.innerHTML) + 1;
+    teamTwoGoals.innerHTML = x;
+  }
+  teamTwoShoot.innerHTML = newTeamTwoShots;
+});
+
+console.log(buttonOne);
+console.log(buttonTwo);
+console.log(gameReset);
